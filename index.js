@@ -20,30 +20,80 @@ const Intern = require('./lib/Intern.js');
 const OUTPUT_DIR = path.resolve(__dirname, 'output');
 const outputPath = path.join(OUTPUT_DIR, 'team.html');
 
-const render = require('./src/html-template.js');
+const render = require('./src/page-template.js');
 
 const teamMembers = [];
 const idArray = [];
 
 function appMenu() {
+    // Get Manager Info
     function createManager() {
+        console.log('Please build your team');
+        inquirer.prompt([{
+                type: 'input',
+                name: 'managerName',
+                message: "What is the manager's name?",
+                validate: managerName => {
+                    if (managerName) {
+                        return true;
+                    } else {
+                        console.log("Please enter manager's name.")
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'managerEmail',
+                message: "What is the manager's email?",
+                validate: managerEmail => {
+                    if (managerEmail) {
+                        return true;
+                    } else {
+                        console.log("Please enter manager's email.")
+                        return false;
+                    }
+                }
+            }, {
+                type: 'input',
+                name: 'managerNumber',
+                message: "What is the manager's number?",
+                validate: managerEmail => {
+                    if (managerEmail) {
+                        return true;
+                    } else {
+                        console.log("Please enter manager's email.")
+                        return false;
+                    }
+                }
+            },
 
+
+
+
+
+
+
+        }])
+
+}
+
+function createTeam() {
+
+}
+
+function addEngineer() {
+
+}
+
+function addIntern() {
+
+}
+
+function buildTeam() {
+    // creare output directory if output path doesn't exist
+    if (!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR)
     }
-
-    function createTeam() {
-
-    }
-
-    function addEngineer() {
-
-    }
-
-    function addIntern() {
-
-    }
-
-    function buildTeam() {
-
-    }
-
+    fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
 }
