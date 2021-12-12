@@ -3,7 +3,7 @@ const { generate } = require("rxjs");
 //create the team
 const generateTeam = team => {
     const generateManager = manager => {
-        return `<div class = "card employee-card" >
+        return `<div class = "card Engineer-card" >
             <
             div class = "card-header" >
             <
@@ -29,15 +29,15 @@ const generateTeam = team => {
     const generateIntern = intern => {}
     const html = [];
     html.push(team
-        .filter(employee => employee.getRole() === "Manager")
+        .filter(Engineer => Engineer.getRole() === "Manager")
         .map(manager => generateManager(manager))
     );
     html.push(team
-        .filter(employee => employee.getRole() === "Engineer")
+        .filter(Engineer => Engineer.getRole() === "Engineer")
         .map(engineer => generateEngineer(engineer)).join("")
     );
     html.push(team
-        .filter(employee => employee.getRole() === "Intern")
+        .filter(Engineer => Engineer.getRole() === "Intern")
         .map(intern => generateIntern(intern))
         .join("")
     );

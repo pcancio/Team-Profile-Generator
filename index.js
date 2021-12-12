@@ -1,6 +1,6 @@
 // WHEN I start the application
-// THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
-// WHEN I enter the team manager’s name, employee ID, email address, and office number
+// THEN I am prompted to enter the team manager’s name, Engineer ID, email address, and office number
+// WHEN I enter the team manager’s name, Engineer ID, email address, and office number
 // THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
 // WHEN I select the engineer option
 // THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
@@ -71,8 +71,8 @@ createManager = () => {
                 type: 'input',
                 name: 'managerNumber',
                 message: "What is the manager's office number?",
-                validate: managerEmail => {
-                    if (managerEmail) {
+                validate: managerNumber => {
+                    if (managerNumber) {
                         return true;
                     } else {
                         console.log("Please enter manager's office number.")
@@ -84,27 +84,56 @@ createManager = () => {
         .then(managerAns => {
             const manager = new Manager(managerAns.managerName, managerAns.managerId, managerAns.managerEmail, managerAns.managerNumber);
             teamMembers.push(manager);
+            nextEngineer()
         })
 }
 
-function createEmployee() {
+createManager()
 
-    // }
+const nextEngineer = () => {
+        inquirer.prompt([{
+                type: 'list',
+                name: 'nextEngineer',
+                message: "What do you want to do next?",
+                choices: ['Add Engineer', 'Add Intern', 'Finished building the team']
 
-    // function addEngineer() {
+            }])
+            .then(nextEngineerData) => {
+                const { nextEngineer } = nextEngineerData;
+                switch (nextEngineer) {
+                    case "Add Engineer":
+                        promptEngineerInfo()
+                        break;
+                    case "Add Intern":
+                        promptInternInfo()
+                        break;
 
-    // }
+                }
+            }
 
-    // function addIntern() {
 
-    // }
+        createEngineer = () => {
+            console.log(`Add a new Engineer`);
 
-    function buildTeam() {
-        // creare output directory if output path doesn't exist
-        if (!fs.existsSync(OUTPUT_DIR)) {
-            fs.mkdirSync(OUTPUT_DIR)
+            return inquirer.prompt([
+                {}
+            ])
         }
-        fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
-    }
 
-    createManager()
+        // }
+
+        // function addEngineer() {
+
+        // }
+
+        // function addIntern() {
+
+        // }
+
+        function buildTeam() {
+            // creare output directory if output path doesn't exist
+            if (!fs.existsSync(OUTPUT_DIR)) {
+                fs.mkdirSync(OUTPUT_DIR)
+            }
+            fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
+        }
