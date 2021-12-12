@@ -9,6 +9,7 @@
 // WHEN I decide to finish building my team
 // THEN I exit the application, and the HTML is generated
 
+// const declarations 
 const inquirer = require('inquirer');
 const path = require('path');
 const fs = require('fs');
@@ -19,17 +20,15 @@ const Intern = require('./lib/Intern.js');
 
 const OUTPUT_DIR = path.resolve(__dirname, 'output');
 const outputPath = path.join(OUTPUT_DIR, 'team.html');
-
 const render = require('./src/page-template.js');
 
 const teamMembers = [];
-const idArray = [];
 
-function appMenu() {
-    // Get Manager Info
-    function createManager() {
-        console.log('Please build your team');
-        inquirer.prompt([{
+createManager = () => {
+    console.log('Please build your team');
+    return inquirer.prompt([
+            //manageName
+            {
                 type: 'input',
                 name: 'managerName',
                 message: "What is the manager's name?",
@@ -38,6 +37,19 @@ function appMenu() {
                         return true;
                     } else {
                         console.log("Please enter manager's name.")
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'managerId',
+                message: "What is the manager's ID?",
+                validate: managerId => {
+                    if (managerId) {
+                        return true;
+                    } else {
+                        console.log("Please enter manager's Id.")
                         return false;
                     }
                 }
@@ -54,46 +66,45 @@ function appMenu() {
                         return false;
                     }
                 }
-            }, {
+            },
+            {
                 type: 'input',
                 name: 'managerNumber',
-                message: "What is the manager's number?",
+                message: "What is the manager's office number?",
                 validate: managerEmail => {
                     if (managerEmail) {
                         return true;
                     } else {
-                        console.log("Please enter manager's email.")
+                        console.log("Please enter manager's office number.")
                         return false;
                     }
                 }
-            },
-
-
-
-
-
-
-
-        }])
-
+            }
+        ])
+        .then(managerAns => {
+            const manager = new Manager(managerAns.managerName, managerAns.managerId, managerAns.managerEmail, managerAns.managerNumber);
+            teamMembers.push(manager);
+        })
 }
 
-function createTeam() {
+function createEmployee() {
 
-}
+    // }
 
-function addEngineer() {
+    // function addEngineer() {
 
-}
+    // }
 
-function addIntern() {
+    // function addIntern() {
 
-}
+    // }
 
-function buildTeam() {
-    // creare output directory if output path doesn't exist
-    if (!fs.existsSync(OUTPUT_DIR)) {
-        fs.mkdirSync(OUTPUT_DIR)
+    function buildTeam() {
+        // creare output directory if output path doesn't exist
+        if (!fs.existsSync(OUTPUT_DIR)) {
+            fs.mkdirSync(OUTPUT_DIR)
+        }
+        fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
     }
-    fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
-}
+
+    createManager()
