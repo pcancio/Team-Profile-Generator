@@ -2,14 +2,10 @@
 Challenge 10
 This is a Node.js command-line application that takes in information about Engineers on a software engineering team and generates an HTML webpage that displays summaries for each person. Unit tests for each part of the code are also featured.
 
----
-
 # User Story
 AS A manager
 I WANT to generate a webpage that displays my team's basic info
 SO THAT I have quick access to their emails and GitHub profiles
-
----
 
 # Acceptance Criteria
 GIVEN a command-line application that accepts user input
@@ -30,10 +26,9 @@ THEN I am prompted to enter the intern’s name, ID, email, and school, and I am
 WHEN I decide to finish building my team
 THEN I exit the application, and the HTML is generated
 
----
-
 # Images 
 <img src="https://github.com/pcancio/Team-Profile-Generator/blob/main/imagesforreadme/MyTeam.png">
+
 # Links
 
 Walk-through video: https://watch.screencastify.com/v/sKUcusKiy5kIAwI8dPwP
