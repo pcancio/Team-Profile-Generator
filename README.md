@@ -33,7 +33,7 @@ THEN I exit the application, and the HTML is generated
 ---
 
 # Images 
-
+https://github.com/pcancio/Team-Profile-Generator/blob/main/imagesforreadme/MyTeam.png
 # Links
 
 Walk-through video: https://watch.screencastify.com/v/sKUcusKiy5kIAwI8dPwP
