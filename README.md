@@ -31,9 +31,9 @@ THEN I exit the application, and the HTML is generated
 
 # Links
 
-Walk-through video: https://watch.screencastify.com/v/sKUcusKiy5kIAwI8dPwP
-sample html generated using application: https://github.com/pcancio/Team-Profile-Generator/blob/main/dist/team.html
-Github repo: https://github.com/pcancio/Team-Profile-Generator
+- Walk-through video: https://watch.screencastify.com/v/sKUcusKiy5kIAwI8dPwP
+- sample html generated using application: https://github.com/pcancio/Team-Profile-Generator/blob/main/dist/team.html
+- Github repo: https://github.com/pcancio/Team-Profile-Generator
 
 
 
