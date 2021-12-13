@@ -2,10 +2,10 @@
 const generateTeam = team => {
     // create manager card
     const generateManager = manager => {
-        return `<div class = "card employee-card" >
+        return `<div class = "card employee-card">
             <div class = "card-header bg-primary text-light text-center">
             <h2 class = "card-title">${manager.getName()}</h2>  
-            <h3 class = "card-subtitle"><i class="fas fa-people-arrows"> ${manager.getRole()}</i></h3>      
+            <h3 class = "card-subtitle"><i class="fas fa-people-arrows"></i> ${manager.getRole()}</h3>      
             </div>  
             <div class = "card-body">
             <ul class = "list-group">
@@ -21,7 +21,7 @@ const generateTeam = team => {
         return `<div class = "card employee-card">
         <div class = "card-header bg-primary text-light text-center">
         <h2 class = "card-title">${engineer.getName()}</h2>  
-        <h3 class = "card-subtitle"><i class="fas fa-user-astronaut"> ${engineer.getRole()}</i></h3>        
+        <h3 class = "card-subtitle"><i class="fas fa-user-astronaut"></i> ${engineer.getRole()}</h3>        
         </div>  
         <div class = "card-body">
         <ul class = "list-group">
@@ -37,7 +37,7 @@ const generateTeam = team => {
         return `<div class = "card employee-card">
     <div class = "card-header bg-primary text-light text-center">
     <h2 class = "card-title">${intern.getName()}</h2>  
-    <h3 class = "card-subtitle"> <i class="fas fa-rocket"> ${intern.getRole()}</i> </h3 >   
+    <h3 class = "card-subtitle"> <i class="fas fa-rocket"></i> ${intern.getRole()}</h3>   
     </div>  
     <div class = "card-body" >
     <ul class = "list-group" >
@@ -48,6 +48,7 @@ const generateTeam = team => {
     </div> 
     </div>`;
     };
+    // create html 
     const html = [];
     html.push(team
         .filter(Engineer => Engineer.getRole() === "Manager")
@@ -78,17 +79,17 @@ module.exports = teamMembers => {
         <script src="https://kit.fontawesome.com/cc59cd1bed.js" crossorigin="anonymous"></script>
         </head>
     <body>
-    <header class ="container-fluid">
+    <div class ="container-fluid p-3 mb-2 bg-danger text-white">
     <div class= "row">
     <div class="col-12 jumbotron mb-3 team-heading">
         <h1 class ="text-center">My Team</h1>
         </div>
         </div>
-        </header>
+        </div>
       
         <div class = "container">
         <div class = "row">
-        <div class = "team-area col-12 d-flex justify-content-center">
+        <div class = "team-area col-12 d-flex flex-wrap justify-content-center">
         ${generateTeam(teamMembers)}
         </div>
         </div>
