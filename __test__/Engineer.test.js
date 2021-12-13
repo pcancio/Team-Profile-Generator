@@ -45,8 +45,9 @@ test('Can get role via getRole()', () => {
     const e = new Engineer("Foo", 2, testValue);
     expect(e.getRole()).toBe(testValue);
 });
+
 test('Can get github via getGithub()', () => {
     const testValue = 'git@github.com';
-    const e = new Engineer("Foo", 3, testValue);
+    const e = new Engineer("Foo", 3, "Bla", testValue);
     expect(e.getGithub()).toBe(testValue);
 });

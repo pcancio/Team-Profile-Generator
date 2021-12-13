@@ -1,6 +1,6 @@
 const { expect } = require('@jest/globals')
 
-const Intern = require('.../lib/Intern.js');
+const Intern = require('../lib/Intern.js');
 
 test('can instantiate Intern instance', () => {
     const e = new Intern();
@@ -42,12 +42,12 @@ test('Can get id via getID()', () => {
     expect(e.getId()).toBe(testValue);
 });
 test('Can get role via getRole()', () => {
-    const testValue = "Engineer";
+    const testValue = "Intern";
     const e = new Intern("Foo", 2, testValue);
     expect(e.getRole()).toBe(testValue);
 });
 test('Can get school via getSchool()', () => {
     const testValue = "Columbia";
-    const e = new Intern("Foo", 3, testValue);
+    const e = new Intern("Foo", 3, "Bla", testValue);
     expect(e.getSchool()).toBe(testValue);
 });
